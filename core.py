@@ -3,17 +3,22 @@ from random import randint
 
 spisok= list(range(0,99999)) #ничего лучше в голову не лезет
 spisok_str = str(spisok)
+loop = 1
 
-a = randint(0,100)
-b = randint(0,100)
+for i in range(0, loop):
+    a = randint(0,100)
+    b = randint(0,100)
+    
+    plus = str(a + b)
+    question_plus = (f'Введите сумму чисел {a} и {b}: ')
 
-plus = str(a + b)
-question_plus = (f'Введите сумму чисел {a} и {b}: ')
-
-correct_result_plus = (f'да, {a} + {b} = {plus}')         
-
-
-print(plus)
+    correct_result_plus = (f'да, {a} + {b} = {plus}')
+    print(plus)
+    if loop == 'нет':
+        break
+    else:
+        loop += 1          
+    
 
 
 c = randint(0,10)

@@ -29,7 +29,7 @@ async def addition_plus(message: Message, state: FSMContext):
 async def level_1(message: Message, state: FSMContext):
    await state.update_data(level_1=message.text)
 
-   if core.one_to_ten in message.text:
+   if core.pon in message.text:
       if message.text == core.plus:
          await message.answer(core.correct_result_plus)
       else:

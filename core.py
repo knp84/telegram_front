@@ -4,7 +4,7 @@ from random import randint
 a = randint(0,100)
 b = randint(0,100)
 
-plus = a + b
+plus = str(a + b)
 question_plus = (f'Введите сумму чисел {a} и {b}: ')
 
 correct_result_plus = (f'да, {a} + {b} = {plus}')         

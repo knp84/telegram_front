@@ -43,19 +43,21 @@ async def level_two(callback: CallbackQuery, state: FSMContext):
 async def level_1(message: Message, state: FSMContext):
    await state.update_data(level_1=message.text)
 
-   if message.text in core.spisok_str or message.text == 'да' or message.text == 'нет':
+   if message.text in core.spisok_str:
       if message.text == core.plus:
          await message.answer(core.correct_result_plus)
       else:
          await message.answer(core.wrong_result)
+   elif message.text == 'да' or message.text == 'нет':
+      await message.answer('продолжить дальше? да/нет')
+      if message.text == 'нет':
+         core.loop = 'нет'
+      else:
+         core.loop += 1
    else:
       await message.answer('Введите число!')
    
-   await message.answer('продолжить дальше? да/нет')
-   if message.text == 'нет':
-      core.loop = 'нет'
-   else:
-      core.loop += 1
+   
    
    
 

@@ -5,7 +5,7 @@ main = ReplyKeyboardMarkup(keyboard=[[types.KeyboardButton(text='Выбрать 
                         resize_keyboard=True)
 
 Levels = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text='Уровень 1', callback_data='level_1')]
-    [InlineKeyboardButton(text='Уровень 2', callback_data='level_2')]])
+    [InlineKeyboardButton(text='Уровень 1', callback_data='level_one')]
+    [InlineKeyboardButton(text='Уровень 2', callback_data='level_two')]])
 
                                                

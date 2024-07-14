@@ -36,4 +36,6 @@ async def level_1(message: Message, state: FSMContext):
          await message.answer(core.wrong_result)
    else:
       await message.answer('Введите число!')
+   
+   await state.finish()
 

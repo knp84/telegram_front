@@ -21,8 +21,14 @@ async def send_welcome(message: Message):
    await message.answer("Начало работы \nВыберите уровень сложности", reply_markup=main)
 
 @router.message(F.text=='Выбрать уровень сложности')
-async def Level(message: Message, state: FSMContext):
+async def levels_dif(message: Message):
    await message.answer('levels difficult', reply_markup=Levels)
+
+
+
+@router.message()
+async def Level(message: Message, state: FSMContext):
+   
    
    if message.text == 'Уровень 1':
       await state.set_state(Playing.level_1)

@@ -19,7 +19,7 @@ print(plus)
 c = randint(0,10)
 d = randint(0,10)
 
-multiply = d * c
+multiply = str(d * c)
 question_multiply = (f'Введите произведение чисел {d} и {c}: ')
 correct_result_multiply = (f'да, {d} * {c} = {multiply}')   
 

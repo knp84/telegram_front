@@ -1,8 +1,8 @@
 from math import sqrt
 from random import randint
 
-one_to_ten = list(range(0,99999999999999))
-pon = str(one_to_ten)
+spisok= list(range(0,99999999999999)) #ничего лучше в голову не лезет
+spisok_str = str(spisok)
 
 a = randint(0,100)
 b = randint(0,100)

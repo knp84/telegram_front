@@ -1,6 +1,8 @@
 from math import sqrt
 from random import randint
-                           
+
+one_to_ten = list(range(1,11))
+
 a = randint(0,100)
 b = randint(0,100)
 

@@ -23,14 +23,14 @@ async def send_welcome(message: Message):
 @router.message(F.text == 'Уровень 1')
 async def addition_plus(message: Message, state: FSMContext):
    await state.set_state(Playing.level_1)
-   await message.answer(core.plus)
+   await message.answer(core.question_plus)
 
 @router.message(Playing.level_1)
 async def level_1(message: Message, state: FSMContext):
    await state.update_data(level_1=message.text)
 
-   if message.text == core.addition_player:
-      await message.answer(core.pon_1)
+   if message.text == core.plus:
+      await message.answer(core.correct_result_plus)
    else:
-      await message.answer(core.pon)
+      await message.answer(core.wrong_result)
 

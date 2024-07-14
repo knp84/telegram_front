@@ -1,7 +1,7 @@
 from math import sqrt
 from random import randint
 
-one_to_ten = list(range(1,11))
+one_to_ten = list(range(0,11))
 pon = str(one_to_ten)
 
 a = randint(0,100)

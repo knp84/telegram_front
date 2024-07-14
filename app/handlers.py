@@ -1,5 +1,5 @@
 from aiogram import  Router, F
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
 from aiogram.filters import CommandStart
 from app.keyboard import main, Levels
 
@@ -26,17 +26,16 @@ async def levels_dif(message: Message):
 
 
 
-@router.message()
-async def Level(message: Message, state: FSMContext):
    
+@router.callback_query(F.data=='level_one')
+async def level_one(message: Message, state: FSMContext ,callback: CallbackQuery):    
+   await callback.state.set_state(Playing.level_1)
+   await callback.message.answer(core.question_plus)
    
-   if message.text == 'Уровень 1':
-      await state.set_state(Playing.level_1)
-      await message.answer(core.question_plus)
-   
-   elif message.text == 'Уровень 2':
-      await state.set_state(Playing.level_2)
-      await message.answer(core.question_multiply) 
+@router.callback_query(F.data=='level_two')
+async def level_two(message: Message, state: FSMContext ,callback: CallbackQuery):      
+   await callback.state.set_state(Playing.level_2)
+   await callback.message.answer(core.question_multiply) 
 
 @router.message(Playing.level_1)
 async def level_1(message: Message, state: FSMContext):

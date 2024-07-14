@@ -29,8 +29,11 @@ async def addition_plus(message: Message, state: FSMContext):
 async def level_1(message: Message, state: FSMContext):
    await state.update_data(level_1=message.text)
 
-   if message.text == core.plus:
-      await message.answer(core.correct_result_plus)
+   if message.text == str(int):
+      if message.text == core.plus:
+         await message.answer(core.correct_result_plus)
+      else:
+         await message.answer(core.wrong_result)
    else:
-      await message.answer(core.wrong_result)
+      await message.answer('Введите число!')
 

@@ -20,10 +20,14 @@ class Playing(StatesGroup):
 async def send_welcome(message: Message):
    await message.answer("Начало работы \nВыберите уровень сложности", reply_markup=main)
 
-@router.message(F.text == 'Уровень 1')
+@router.message()
 async def Plus(message: Message, state: FSMContext):
-   await state.set_state(Playing.level_1)
-   await message.answer(core.question_plus)
+   if message.text == 'Уровень 1':
+      await state.set_state(Playing.level_1)
+      await message.answer(core.question_plus)
+   elif message.text == 'Уровень 2':
+      await state.set_state(Playing.level_2)
+      await message.answer(core.question_multiply) 
 
 @router.message(Playing.level_1)
 async def level_1(message: Message, state: FSMContext):
@@ -37,10 +41,6 @@ async def level_1(message: Message, state: FSMContext):
    else:
       await message.answer('Введите число!')
    
-@router.message(F.text == 'Уровень 2')
-async def Multiply(message: Message, state: FSMContext):
-   await state.set_state(Playing.level_2)
-   await message.answer(core.question_multiply)
 
 @router.message(Playing.level_2)
 async def level_2(message: Message, state: FSMContext):

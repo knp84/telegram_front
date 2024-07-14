@@ -1,7 +1,7 @@
 from math import sqrt
 from random import randint
 
-one_to_ten = list(range(0,10))
+one_to_ten = list(range(0,99999999999999))
 pon = str(one_to_ten)
 
 a = randint(0,100)
@@ -25,5 +25,3 @@ correct_result_multiply = (f'да, {d} * {c} = {multiply}')
 
 
 wrong_result = ('Неверный ответ!')  
-
-print(one_to_ten, pon)

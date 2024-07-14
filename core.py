@@ -3,9 +3,9 @@ from random import randint
 
 spisok= list(range(0,99999)) #ничего лучше в голову не лезет
 spisok_str = str(spisok)
-loop = 1
-
-for i in range(0, loop):
+loop = None
+i = 1
+for i in range(0, i):           
     a = randint(0,100)
     b = randint(0,100)
     
@@ -17,7 +17,7 @@ for i in range(0, loop):
     if loop == 'нет':
         break
     else:
-        loop += 1          
+        i += 1          
     
 
 

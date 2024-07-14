@@ -29,11 +29,13 @@ async def levels_dif(message: Message):
    
 @router.callback_query(F.data=='level_one')
 async def level_one(message: Message, state: FSMContext ,callback: CallbackQuery):    
+   await callback.answer('lvl 1')
    await callback.state.set_state(Playing.level_1)
    await callback.message.answer(core.question_plus)
    
 @router.callback_query(F.data=='level_two')
 async def level_two(message: Message, state: FSMContext ,callback: CallbackQuery):      
+   await callback.answer('lvl 2')
    await callback.state.set_state(Playing.level_2)
    await callback.message.answer(core.question_multiply) 
 

@@ -1,9 +1,11 @@
 from aiogram import types
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 
-main = ReplyKeyboardMarkup(keyboard=[[types.KeyboardButton(text='Уровень 1')],
-                                    [types.KeyboardButton(text='Уровень 2')],
-                                    [types.KeyboardButton(text='Уровень 3 WIP'),
-                                    types.KeyboardButton(text='уровень 4 WIP')]],
-                        resize_keyboard=True,
-                        input_field_placeholder='Выберите уровень сложности....')
+main = ReplyKeyboardMarkup(keyboard=[[types.KeyboardButton(text='Выбрать уровень сложности')]],
+                        resize_keyboard=True)
+
+Levels = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text='Уровень 1', callback_data='level_1')]
+    [InlineKeyboardButton(text='Уровень 2', callback_data='level_2')]])
+
+                                               

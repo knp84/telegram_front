@@ -1,7 +1,7 @@
 from aiogram import  Router, F
 from aiogram.types import Message
 from aiogram.filters import CommandStart
-from app.keyboard import main
+from app.keyboard import main, Levels
 
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
@@ -20,11 +20,14 @@ class Playing(StatesGroup):
 async def send_welcome(message: Message):
    await message.answer("Начало работы \nВыберите уровень сложности", reply_markup=main)
 
-@router.message()
-async def Plus(message: Message, state: FSMContext):
+@router.message(F.text=='Выбрать уровень сложности')
+async def Level(message: Message, state: FSMContext):
+   await message.answer('levels difficult', reply_markup=Levels)
+   
    if message.text == 'Уровень 1':
       await state.set_state(Playing.level_1)
       await message.answer(core.question_plus)
+   
    elif message.text == 'Уровень 2':
       await state.set_state(Playing.level_2)
       await message.answer(core.question_multiply) 
@@ -45,6 +48,7 @@ async def level_1(message: Message, state: FSMContext):
 @router.message(Playing.level_2)
 async def level_2(message: Message, state: FSMContext):
    await state.update_data(level_2=message.text)
+   
    if message.text in core.spisok_str:
       if message.text == core.multiply:
          await message.answer(core.correct_result_multiply)

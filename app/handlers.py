@@ -24,23 +24,23 @@ class Stopping(StatesGroup):
 @router.message(CommandStart())
 async def send_welcome(message: Message):
    await message.answer("Начало работы \nВыберите уровень сложности", reply_markup=main)
+   
 
 @router.message(Command('stop'))
 async def Stop(message: Message,state: FSMContext):
    await message.answer('ok')
    await state.set_state(Stopping.stop)
+   
 
 @router.message(F.text=='Выбрать уровень сложности')
 async def levels_dif(message: Message):
    await message.answer('difficulty levels', reply_markup=Levels)
 
-
-
    
 @router.callback_query(F.data == 'level_one')
 async def level_one(callback: CallbackQuery, state: FSMContext):    
-   await callback.answer('Уровень 1: Cложение')
    
+   await callback.answer('Уровень 1: Cложение')
    await callback.message.answer(core.plus_func(1))
    await state.set_state(Playing.level_1)
 

@@ -37,7 +37,7 @@ async def levels_dif(message: Message):
    await message.answer('difficulty levels', reply_markup=Levels)
 
    
-@router.callback_query(F.data == 'level_one')
+@router.callback_query(F.data == 'level_one')               #даю сатусы
 async def level_one(callback: CallbackQuery, state: FSMContext):    
    
    await callback.answer('Уровень 1: Cложение')
@@ -50,7 +50,7 @@ async def level_two(callback: CallbackQuery, state: FSMContext):
    await callback.message.answer(core.question_multiply) 
    await state.set_state(Playing.level_2)
 
-@router.message(Playing.level_1)
+@router.message(Playing.level_1)                #реагирую на статусы
 async def level_1(message: Message, state: FSMContext):
    await state.update_data(level_1=message.text)
 

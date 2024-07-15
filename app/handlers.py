@@ -16,6 +16,11 @@ class Playing(StatesGroup):
    level_3 = State()
    level_4 = State()
 
+class Stopping(StatesGroup):
+   stop = State()
+   resume = State()
+
+
 @router.message(CommandStart())
 async def send_welcome(message: Message):
    await message.answer("Начало работы \nВыберите уровень сложности", reply_markup=main)

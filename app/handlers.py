@@ -29,7 +29,6 @@ async def send_welcome(message: Message):
 async def Stop(message: Message,state: FSMContext):
    await message.answer('ok')
    await state.set_state(Stopping.stop)
-   core.plus_func()
 
 @router.message(F.text=='Выбрать уровень сложности')
 async def levels_dif(message: Message):
@@ -41,7 +40,8 @@ async def levels_dif(message: Message):
 @router.callback_query(F.data == 'level_one')
 async def level_one(callback: CallbackQuery, state: FSMContext):    
    await callback.answer('Уровень 1: Cложение')
-   await callback.message.answer(core.question_plus)
+   
+   await callback.message.answer(core.plus_func(1))
    await state.set_state(Playing.level_1)
 
 @router.callback_query(F.data == 'level_two')
@@ -55,8 +55,8 @@ async def level_1(message: Message, state: FSMContext):
    await state.update_data(level_1=message.text)
 
    if message.text in core.spisok_str:
-      if message.text == core.plus:
-         await message.answer(core.correct_result_plus)
+      if message.text == core.plus_func(3):
+         await message.answer(core.plus_func(2))
       else:
          await message.answer(core.wrong_result)
    else:
@@ -85,7 +85,7 @@ async def level_2(message: Message, state: FSMContext):
 @router.message(Stopping.resume)
 async def Resume(message: Message, state: FSMContext):
    
-   core.plus_func()
+   
 
    if message.text == 'нет':
       await state.set_state(Stopping.stop)

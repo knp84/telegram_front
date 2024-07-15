@@ -31,7 +31,7 @@ async def Stop(message: Message, state: FSMContext):
 
 @router.message(F.text=='Выбрать уровень сложности')
 async def levels_dif(message: Message):
-   await message.answer('levels difficult', reply_markup=Levels)
+   await message.answer('difficulty levels', reply_markup=Levels)
 
 
 

@@ -1,40 +1,35 @@
 from math import sqrt
 from random import randint
-
 spisok= list(range(0,99999)) #ничего лучше в голову не лезет
 spisok_str = str(spisok)
 
 
-#позже попытаюсь сделать базу данных(если мне это чем то поможет), а пока что просто не могу ввести разнообразие примеров
-class AB:
-    a = randint(0,100)
-    b = randint(0,100)
-    print(a)
-    plus = str(a + b)
-    def __init__(self):
-        self.a = AB.a
-        self.b = AB.b
-    def reload_ab(z):
-        AB.a = randint(0,50)
-        AB.b = randint(0,50)
-        if z == 'a':
-            print(AB.a)
-            return AB.a
-        elif z == 'b':
-            return AB.b
+a_0 = lambda: randint(0, 100)
 
-AB()
-AB.reload_ab('a')
+def plus_pon_a():
+    a = a_0()
+    return a
+
+def plus_pon_b():
+    b = a_0
+    return b
 
 
+a_1 = plus_pon_a()
+b_1 = plus_pon_b()
+plus = str(a_1 + b_1)
+print(plus)
 
-question_plus = (f'Введите сумму чисел {AB.a} и {AB.b}: ')
-correct_result_plus = (f'да, {AB.a} + {AB.b} = {AB.plus}') 
+question_plus = (f'Введите сумму чисел {a_1} и {b_1}: ')
+print(question_plus)
 
-       
-print(question_plus)    
+correct_result_plus = (f'да, {a_1} + {b_1} = {plus}')   
 print(correct_result_plus)
-    
+
+
+#позже попытаюсь сделать базу данных(если мне это чем то поможет), а пока что просто не могу ввести разнообразие примеров
+
+
 
 
 

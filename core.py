@@ -6,20 +6,25 @@ spisok_str = str(spisok)
 
 
 #позже попытаюсь сделать базу данных(если мне это чем то поможет), а пока что просто не могу ввести разнообразие примеров
-class AB():
+class AB:
     a = randint(0,100)
     b = randint(0,100)
+    print(a)
     plus = str(a + b)
+    def __init__(self):
+        self.a = AB.a
+        self.b = AB.b
     def reload_ab(z):
-        AB.a += randint(0,50)
-        AB.b += randint(0,50)
+        AB.a = randint(0,50)
+        AB.b = randint(0,50)
         if z == 'a':
             print(AB.a)
             return AB.a
         elif z == 'b':
             return AB.b
 
-
+AB()
+AB.reload_ab('a')
 
 
 

@@ -8,8 +8,6 @@ from aiogram.fsm.context import FSMContext
 
 import core
 
-loop_f = 2
-
 router = Router()
 
 class Playing(StatesGroup):
@@ -31,7 +29,7 @@ async def send_welcome(message: Message):
 async def Stop(message: Message,state: FSMContext):
    await message.answer('ok')
    await state.set_state(Stopping.stop)
-   loop_f += 1
+   core.i += 1
 
 @router.message(F.text=='Выбрать уровень сложности')
 async def levels_dif(message: Message):
@@ -87,14 +85,13 @@ async def level_2(message: Message, state: FSMContext):
 @router.message(Stopping.resume)
 async def Resume(message: Message, state: FSMContext):
    
-   loop_f += 1
+   core.i += 1
 
    if message.text == 'нет':
       await state.set_state(Stopping.stop)
 
    elif message.text == 'да':
       await message.answer('difficulty levels', reply_markup=Levels)
-
 
 
 

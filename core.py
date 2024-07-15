@@ -1,12 +1,12 @@
 from math import sqrt
 from random import randint
-
+from app.handlers import loop
 spisok= list(range(0,99999)) #ничего лучше в голову не лезет
 spisok_str = str(spisok)
          
 #позже попытаюсь сделать базу данных(если мне это чем то поможет), а пока что просто не могу ввести разнообразие примеров
-i = 1
-for i in range(0, i):
+
+for i in range(1, loop):
     a = randint(0,100)
     b = randint(0,100)
         

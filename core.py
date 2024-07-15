@@ -4,35 +4,18 @@ spisok= list(range(0,99999)) #ничего лучше в голову не ле�
 spisok_str = str(spisok)
 
 
-a_0 = lambda: randint(0, 100)
-
-def plus_pon_a():
-    a = a_0()
-    return a
-
-def plus_pon_b():
-    b = a_0
-    return b
 
 
-a_1 = plus_pon_a()
-b_1 = plus_pon_b()
-plus = str(a_1 + b_1)
-print(plus)
+a = randint(0, 100)
+b = randint(0, 100)
 
-question_plus = (f'Введите сумму чисел {a_1} и {b_1}: ')
-print(question_plus)
+plus = str(a + b)
+question_plus = (f'Введите сумму чисел {a} и {b}: ')
+correct_result_plus = (f'да, {a} + {b} = {plus}')   
 
-correct_result_plus = (f'да, {a_1} + {b_1} = {plus}')   
-print(correct_result_plus)
 
 
 #позже попытаюсь сделать базу данных(если мне это чем то поможет), а пока что просто не могу ввести разнообразие примеров
-
-
-
-
-
 
 
 c = randint(0,10)

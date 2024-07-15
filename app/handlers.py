@@ -1,6 +1,6 @@
 from aiogram import  Router, F
 from aiogram.types import Message, CallbackQuery
-from aiogram.filters import CommandStart
+from aiogram.filters import CommandStart, Command
 from app.keyboard import main, Levels
 
 from aiogram.fsm.state import State, StatesGroup
@@ -24,6 +24,10 @@ class Stopping(StatesGroup):
 @router.message(CommandStart())
 async def send_welcome(message: Message):
    await message.answer("Начало работы \nВыберите уровень сложности", reply_markup=main)
+
+@router.message(Command('stop'))
+async def Stop(message: Message, state: FSMContext):
+   await state.set_state(Stopping.stop)
 
 @router.message(F.text=='Выбрать уровень сложности')
 async def levels_dif(message: Message):
@@ -55,11 +59,10 @@ async def level_1(message: Message, state: FSMContext):
          await message.answer(core.wrong_result)
    else:
       await message.answer('Введите число!')
+      
+   await state.set_state(Stopping.resume)
    
    
-   
-   
-
 @router.message(Playing.level_2)
 async def level_2(message: Message, state: FSMContext):
    await state.update_data(level_2=message.text)
@@ -71,4 +74,12 @@ async def level_2(message: Message, state: FSMContext):
          await message.answer(core.wrong_result)
    else:
       await message.answer('Введите число!')
+   
+   await state.set_state(Stopping.resume)
+
+#level_3 and level_4 later
+
+
+
+
 

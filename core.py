@@ -6,27 +6,32 @@ spisok_str = str(spisok)
 
 
 #позже попытаюсь сделать базу данных(если мне это чем то поможет), а пока что просто не могу ввести разнообразие примеров
-
-
-def plus_func(z):
+class AB():
     a = randint(0,100)
     b = randint(0,100)
-        
     plus = str(a + b)
-    
-    question_plus = (f'Введите сумму чисел {a} и {b}: ')
+    def reload_ab(z):
+        AB.a += randint(0,50)
+        AB.b += randint(0,50)
+        if z == 'a':
+            print(AB.a)
+            return AB.a
+        elif z == 'b':
+            return AB.b
 
-    correct_result_plus = (f'да, {a} + {b} = {plus}')
 
-    print(plus)
+
+
+
+question_plus = (f'Введите сумму чисел {AB.a} и {AB.b}: ')
+correct_result_plus = (f'да, {AB.a} + {AB.b} = {AB.plus}') 
+
+       
+print(question_plus)    
+print(correct_result_plus)
     
-    if z == 1:
-        return question_plus
-    elif z == 2:
-        return correct_result_plus
-    elif z == 3:
-        return plus
-        
+
+
 
 
 

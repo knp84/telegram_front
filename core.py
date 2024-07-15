@@ -12,7 +12,8 @@ plus = str(a + b)
 question_plus = (f'Введите сумму чисел {a} и {b}: ')
 
 correct_result_plus = (f'да, {a} + {b} = {plus}')
- print(plus)
+
+print(plus)
       
     
 

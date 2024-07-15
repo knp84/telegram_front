@@ -61,7 +61,7 @@ async def level_1(message: Message, state: FSMContext):
       await message.answer('Введите число!')
       
    await state.set_state(Stopping.resume)
-   
+   await message.answer('Продолжить? да/нет')
    
 @router.message(Playing.level_2)
 async def level_2(message: Message, state: FSMContext):
@@ -76,12 +76,14 @@ async def level_2(message: Message, state: FSMContext):
       await message.answer('Введите число!')
    
    await state.set_state(Stopping.resume)
+   await message.answer('Продолжить? да/нет')
 
 #level_3 and level_4 later
 
 @router.message(Stopping.resume)
 async def Resume(message: Message, state: FSMContext):
-   await message.answer('Продолжить? да/нет')
+   
+
 
    if message.text == 'нет':
       await state.set_state(Stopping.stop)

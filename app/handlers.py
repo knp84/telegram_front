@@ -26,7 +26,7 @@ async def send_welcome(message: Message):
    await message.answer("Начало работы \nВыберите уровень сложности", reply_markup=main)
 
 @router.message(Command('stop'))
-async def Stop(message: Message, state: FSMContext):
+async def Stop(state: FSMContext):
    await state.set_state(Stopping.stop)
 
 @router.message(F.text=='Выбрать уровень сложности')
@@ -79,6 +79,15 @@ async def level_2(message: Message, state: FSMContext):
 
 #level_3 and level_4 later
 
+@router.message(Stopping.resume)
+async def Resume(message: Message, state: FSMContext):
+   await message.answer('Продолжить? да/нет')
+
+   if message.text == 'нет':
+      await state.set_state(Stopping.stop)
+
+   elif message.text == 'да':
+      await message.answer('difficulty levels', reply_markup=Levels)
 
 
 

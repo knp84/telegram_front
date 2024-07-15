@@ -26,7 +26,8 @@ async def send_welcome(message: Message):
    await message.answer("Начало работы \nВыберите уровень сложности", reply_markup=main)
 
 @router.message(Command('stop'))
-async def Stop(state: FSMContext):
+async def Stop(message: Message,state: FSMContext):
+   await message.answer('')
    await state.set_state(Stopping.stop)
 
 @router.message(F.text=='Выбрать уровень сложности')

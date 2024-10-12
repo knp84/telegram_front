@@ -43,8 +43,8 @@ async def level_one(callback: CallbackQuery, state: FSMContext):
    await callback.answer('Уровень 1: Cложение')
    await callback.message.answer(core.question_plus)
    await state.set_state(Playing.level_1)
-   await test_per = 1
 
+   
 @router.callback_query(F.data == 'level_two')
 async def level_two(callback: CallbackQuery, state: FSMContext):      
    await callback.answer('Уровень 2: Умножение')

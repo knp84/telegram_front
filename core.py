@@ -1,5 +1,6 @@
 from math import sqrt
 from random import randint
+from app.handlers import test_per
 spisok= list(range(0,99999)) #ничего лучше в голову не лезет
 spisok_str = str(spisok)
 

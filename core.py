@@ -4,7 +4,8 @@ from app.handlers import test_per
 spisok= list(range(0,99999)) #ничего лучше в голову не лезет
 spisok_str = str(spisok)
 
-
+if test_per == 1:
+    print('pon')
 
 
 a = randint(0, 100)

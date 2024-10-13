@@ -10,7 +10,7 @@ import core
 
 router = Router()
 
-class Playing(StatesGroup):
+class CallbackQuery(StatesGroup):
    level_1 = State()
    level_2 = State()
    level_3 = State()
@@ -41,7 +41,7 @@ async def level_one(callback: CallbackQuery, state: FSMContext):
    
    await callback.answer('Уровень 1: Cложение')
    await callback.message.answer(core.question_plus)
-   await state.set_state(Playing.level_1)
+   await state.set_state(CallbackQuery.level_1)
 
    
       
@@ -51,9 +51,9 @@ async def level_one(callback: CallbackQuery, state: FSMContext):
 async def level_two(callback: CallbackQuery, state: FSMContext):      
    await callback.answer('Уровень 2: Умножение')
    await callback.message.answer(core.question_multiply) 
-   await state.set_state(Playing.level_2)
+   await state.set_state(CallbackQuery.level_2)
 
-@router.message(Playing.level_1)                #реагирую на статусы
+@router.message(CallbackQuery.level_1)                #реагирую на статусы
 async def level_1(message: Message, state: FSMContext):
    await state.update_data(level_1=message.text)
 
@@ -70,7 +70,7 @@ async def level_1(message: Message, state: FSMContext):
    
 
    
-@router.message(Playing.level_2)
+@router.message(CallbackQuery.level_2)
 async def level_2(message: Message, state: FSMContext):
    await state.update_data(level_2=message.text)
    

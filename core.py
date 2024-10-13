@@ -1,19 +1,24 @@
 from math import sqrt
 from random import randint
-from app.handlers import test_per
 spisok= list(range(0,99999)) #ничего лучше в голову не лезет
 spisok_str = str(spisok)
 
-if test_per == 1:
-    print('pon')
 
+while True:
+    a = randint(0,100)
+    b = randint(0,100)
+    break
+  
 
-a = randint(0, 100)
-b = randint(0, 100)
 
 plus = str(a + b)
 question_plus = (f'Введите сумму чисел {a} и {b}: ')
 correct_result_plus = (f'да, {a} + {b} = {plus}')   
+
+
+
+
+
 
 
 

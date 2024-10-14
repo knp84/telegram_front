@@ -4,8 +4,7 @@ from app.handlers import router
 from app.middlewares import TestMiddleware
 from config import API_TOKEN
 
-
-router.message.middleware(TestMiddleware())
+router.callback_query.middleware(TestMiddleware())
 
 async def main():
    bot = Bot(token=API_TOKEN)

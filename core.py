@@ -1,4 +1,3 @@
-from math import sqrt
 from random import randint
 
 spisok= list(range(0,99999)) #ничего лучше в голову не лезет
@@ -16,9 +15,6 @@ while True:
 plus = str(a + b)
 question_plus = (f'Введите сумму чисел {a} и {b}: ')
 correct_result_plus = (f'да, {a} + {b} = {plus}')   
-
-
-
 
 
 

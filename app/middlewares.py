@@ -12,11 +12,13 @@ class TestMiddleware(BaseMiddleware):
     ) -> Any:
         
         print('все ок')
-
+    
         return await handler(event, data)
-        
-        
-        
+    
+    
+
+
+
 
     
     

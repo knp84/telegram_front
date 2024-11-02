@@ -6,6 +6,7 @@ from config import API_TOKEN
 
 router.callback_query.middleware(TestMiddleware())
 
+
 async def main():
    bot = Bot(token=API_TOKEN)
    dp = Dispatcher()

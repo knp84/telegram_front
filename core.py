@@ -4,13 +4,9 @@ spisok= list(range(0,99999)) #ничего лучше в голову не ле�
 spisok_str = str(spisok)
 
 
-while True:
-    a = randint(0,100)
-    b = randint(0,100)
+a = randint(0,100)
+b = randint(0,100)
     
-    break
-  
-
 
 plus = str(a + b)
 question_plus = (f'Введите сумму чисел {a} и {b}: ')

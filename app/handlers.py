@@ -92,13 +92,13 @@ async def level_2(message: Message, state: FSMContext):
 @router.message(Stopping.resume)
 async def Resume(message: Message, state: FSMContext):
    
-   
-
    if message.text == 'нет':
       await state.set_state(Stopping.stop)
 
    elif message.text == 'да':
       await message.answer('difficulty levels', reply_markup=Levels)
+
+
 
 
 

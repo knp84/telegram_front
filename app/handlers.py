@@ -26,9 +26,11 @@ def player_solution(mark):
       correct_result_plus = (f'да, {a} + {b} = {plus}')      
       return plus, question_plus, correct_result_plus
    elif mark == 2:
+      a = randint(0,10)
+      b = randint(0,100)
       multiply = str(a * b)
       question_multiply = (f'Введите произведение чисел {a} и {b}: ')
-      correct_result_multiply = (f'да, {a} + {b} = {plus}')
+      correct_result_multiply = (f'да, {a} * {b} = {multiply}')
       return multiply, question_multiply, correct_result_multiply
 class Stopping(StatesGroup):
    stop = State()

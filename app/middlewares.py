@@ -1,10 +1,9 @@
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.asyncio import AsyncSession
-
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 from typing import Any, Awaitable, Callable, Dict
 from aiogram import BaseMiddleware
 from aiogram.types import CallbackQuery, TelegramObject 
 
+from app.database.db import Database
 
 class TestMiddleware(BaseMiddleware):
     async def __call__(

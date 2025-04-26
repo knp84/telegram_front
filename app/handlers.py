@@ -25,6 +25,11 @@ def player_solution(mark):
       question_plus = (f'Введите сумму чисел {a} и {b}: ')
       correct_result_plus = (f'да, {a} + {b} = {plus}')      
       return plus, question_plus, correct_result_plus
+   elif mark == 2:
+      multiply = str(a * b)
+      question_multiply = (f'Введите произведение чисел {a} и {b}: ')
+      correct_result_multiply = (f'да, {a} + {b} = {plus}')
+      return multiply, question_multiply, correct_result_multiply
 class Stopping(StatesGroup):
    stop = State()
    resume = State()
@@ -55,14 +60,16 @@ async def level_one(callback: CallbackQuery, state: FSMContext):
    
    
       
-'''
+
    
 @router.callback_query(F.data == 'level_two')
 async def level_two(callback: CallbackQuery, state: FSMContext):      
+   global multiply, correct_result_multiply
+   multiply, question_multiply, correct_result_multiply = player_solution(2)
    await callback.answer('Уровень 2: Умножение')
-   await callback.message.answer(core.question_multiply) 
+   await callback.message.answer(question_multiply) 
    await state.set_state(CallbackQuery.level_2)
-'''
+
 
 @router.message(CallbackQuery.level_1)                #реагирую на статусы
 async def level_1(message: Message, state: FSMContext):
@@ -79,23 +86,23 @@ async def level_1(message: Message, state: FSMContext):
    await state.set_state(Stopping.resume)
    await message.answer('Продолжить? да/нет')
    
-'''
+
    
 @router.message(CallbackQuery.level_2)
 async def level_2(message: Message, state: FSMContext):
    await state.update_data(level_2=message.text)
    
-   if message.text in list(range(0,99999)):
-      if message.text == core.multiply:
-         await message.answer(core.correct_result_multiply)
+   if message.text in [str(i) for i in range(0,99999)]:
+      if message.text == multiply:
+         await message.answer(correct_result_multiply)
       else:
-         await message.answer(core.wrong_result)
+         await message.answer('Неверный ответ!')
    else:
       await message.answer('Введите число!')
    
    await state.set_state(Stopping.resume)
    await message.answer('Продолжить? да/нет')
-'''
+
 #level_3 and level_4 later
 
 @router.message(Stopping.resume)

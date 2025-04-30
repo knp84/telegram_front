@@ -1,5 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.database.models import User
+
 class Database:
     def __init__(self, session: AsyncSession):
         self.session = session

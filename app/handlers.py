@@ -36,10 +36,11 @@ class Stopping(StatesGroup):
    stop = State()
    resume = State()
 
+
 @router.message(CommandStart())
 async def send_welcome(message: Message):
    await message.answer("Начало работы \nВыберите уровень сложности", reply_markup=main)
-   
+
 
 @router.message(Command('stop'))
 async def Stop(message: Message,state: FSMContext):
@@ -60,10 +61,7 @@ async def level_one(callback: CallbackQuery, state: FSMContext):
    await callback.message.answer(question_plus)
    await state.set_state(CallbackQuery.level_1)
    
-   
-      
 
-   
 @router.callback_query(F.data == 'level_two')
 async def level_two(callback: CallbackQuery, state: FSMContext):      
    global multiply, correct_result_multiply
